@@ -1,0 +1,53 @@
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+$spaceamounts: ('0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5', '5.5', '6', '6.5', '7', '7.5', '8');
+$sides: (top, bottom, left, right, x, y, all);
+
+@each $space in $spaceamounts {
+  @each $side in $sides {
+
+    @if $side == 'x' {
+      .m#{str-slice($side, 0, 1)}-#{str-replace($space, '.', '_')} {
+        margin: 0 #{$space}rem;
+      }
+      .p#{str-slice($side, 0, 1)}-#{str-replace($space, '.', '_')} {
+        padding: 0 #{$space}rem;
+      }
+    }
+    @else if $side == 'y'{
+      .m#{str-slice($side, 0, 1)}-#{str-replace($space, '.', '_')} {
+        margin: #{$space}rem 0;
+      }
+      .p#{str-slice($side, 0, 1)}-#{str-replace($space, '.', '_')} {
+        padding: #{$space}rem 0;
+      }
+    }
+    @else if $side == 'all'{
+      .m#{str-slice($side, 0, 1)}-#{str-replace($space, '.', '_')} {
+        margin: #{$space}rem;
+      }
+      .p#{str-slice($side, 0, 1)}-#{str-replace($space, '.', '_')} {
+        padding: #{$space}rem;
+      }
+    }
+    @else {
+      .m#{str-slice($side, 0, 1)}-#{str-replace($space, '.', '_')} {
+        margin-#{$side}: #{$space}rem;
+      }
+
+      .p#{str-slice($side, 0, 1)}-#{str-replace($space, '.', '_')} {
+        padding-#{$side}: #{$space}rem;
+      }
+    }
+
+
+  }
+}

@@ -1,0 +1,97 @@
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+// Variables
+@import "variables";
+
+@import "functions";
+
+
+.loader_block{
+  position: absolute;
+  display: flex;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  font-size: 5rem;
+  background-color: rgba(255,255,255,0.5);
+  rect{
+    fill: $brand-primary;
+  }
+}
+.status{
+  padding: 5px 8px;
+  background-color: $brand-primary;
+  color: #fff;
+  margin: 0 25px;
+  border-radius: 5px;
+  &.done{
+    background-color: $brand-success;
+  }
+}
+.to-do-list{
+  h3{
+    border-bottom: 1px solid #b9b9b9;
+    padding: 2rem 0;
+  }
+  .items{
+    .item{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #b9b9b9;
+      padding: 7px 15px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 6px 4px 0px;
+      @media (max-width: 992px) {
+        flex-direction: column;
+      }
+      .info{
+        max-width: 500px;
+        margin-right: 15px;
+        @media (max-width: 992px) {
+          margin-right: 0;
+          margin-bottom: 1rem;
+          max-width: 100%;
+        }
+      }
+      .actions{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        @media (max-width: 500px) {
+          flex-direction: column;
+          width: 80%;
+        }
+        .btn{
+          @media (max-width: 500px) {
+            display: block;
+            width: 80%;
+          }
+        }
+      }
+    }
+    .item+.item{
+      margin-top: 2rem;
+    }
+  }
+
+}
+.show_todo_item{
+  h4{
+    border-bottom: 1px solid #b9b9b9;
+    padding-bottom: 1rem;
+  }
+}
+.container-custom {
+  padding: 0 15px;
+  margin: 0 auto;
+  max-width: 1170px;
+}
+
+
+
